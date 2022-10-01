@@ -10,7 +10,7 @@
       </el-form-item>
     </el-form> -->
     {{ custinfo.obj[0] }}
-    {{ 'length:'+ custinfo.obj[0].dsdsd.length }}
+    {{ 'length:' + custinfo.obj[0].dsdsd.length }}
     <div v-if="custinfo.obj[0].dsdsd && custinfo.obj[0].dsdsd.length > 0">222222</div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   name: 'dashboard',
   data() {
     var validatePass2 = (rule: any, value: any, callback: any) => {
-      console.log(value, rule)
+      console.log(value, rule);
       if (value == '44444') {
         callback(new Error('请再次输入密码'));
       } else {
@@ -34,15 +34,13 @@ export default {
           {
             dada: '',
             dsdsd: '',
-          }
-        ]
+          },
+        ],
       },
       custRules: {
-        dsdsd: [
-          { validator: validatePass2, trigger: 'blur' }
-        ],
-      }
-    }
-  }
-}
+        dsdsd: [{ validator: validatePass2, trigger: 'blur' }],
+      },
+    };
+  },
+};
 </script>

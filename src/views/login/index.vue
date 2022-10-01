@@ -1,7 +1,13 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
-      label-position="left">
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+      auto-complete="on"
+      label-position="left"
+    >
       <div class="title-container">
         <h3 class="title">Login</h3>
       </div>
@@ -9,21 +15,42 @@
         <span class="svg-container">
           <svg-icon icon-class="user" />
         </span>
-        <el-input ref="username" v-model="loginForm.username" placeholder="Username" name="username" type="text"
-          tabindex="1" auto-complete="on" />
+        <el-input
+          ref="username"
+          v-model="loginForm.username"
+          placeholder="Username"
+          name="username"
+          type="text"
+          tabindex="1"
+          auto-complete="on"
+        />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
-        <el-input :key="passwordType" ref="password" v-model="loginForm.password" :type="passwordType"
-          placeholder="Password" name="password" tabindex="2" auto-complete="on" @keyup.enter="handleLogin" />
+        <el-input
+          :key="passwordType"
+          ref="password"
+          v-model="loginForm.password"
+          :type="passwordType"
+          placeholder="Password"
+          name="password"
+          tabindex="2"
+          auto-complete="on"
+          @keyup.enter="handleLogin"
+        />
         <span class="show-pwd" @click="showPwd">
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-      <el-button :loading="loading" type="primary" style="width: 100%; margin-bottom: 30px"
-        @click.prevent="handleLogin">Login</el-button>
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        @click.prevent="handleLogin"
+        >Login</el-button
+      >
       <div class="tips">
         <span style="margin-right: 20px">username: admin</span>
         <span> password: any</span>
@@ -33,46 +60,50 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { mapActions } from "vuex";
-import { validUsername } from "@/utils/validate";
+import { defineComponent } from 'vue';
+import { mapActions } from 'vuex';
+import { validUsername } from '@/utils/validate';
 
 export default defineComponent({
-  name: "Login",
+  name: 'Login',
   data() {
     const validateUsername = (rule: any, value: any, callback: Function) => {
       if (!validUsername(value)) {
-        callback(new Error("Please enter the correct user name"));
+        callback(new Error('Please enter the correct user name'));
       } else {
         callback();
       }
     };
     const validatePassword = (rule: any, value: any, callback: Function) => {
       if (value.length < 6) {
-        callback(new Error("The password can not be less than 6 digits"));
+        callback(new Error('The password can not be less than 6 digits'));
       } else {
         callback();
       }
     };
     return {
       loginForm: {
-        username: "admin",
-        password: "111111",
+        username: 'admin',
+        password: '111111',
       },
       loginRules: {
         username: [
-          { 
-            required: true, trigger: "blur", validator: validateUsername 
+          {
+            required: true,
+            trigger: 'blur',
+            validator: validateUsername,
           },
         ],
         password: [
-          { 
-            required: true, trigger: "blur", validator: validatePassword 
+          {
+            required: true,
+            trigger: 'blur',
+            validator: validatePassword,
           },
         ],
       },
       loading: false,
-      passwordType: "password",
+      passwordType: 'password',
       redirect: undefined,
     };
   },
@@ -85,12 +116,12 @@ export default defineComponent({
     },
   },
   methods: {
-    ...mapActions(["app/toggleSideBar", "user/login"]),
+    ...mapActions(['app/toggleSideBar', 'user/login']),
     showPwd() {
-      if (this.passwordType === "password") {
-        this.passwordType = "";
+      if (this.passwordType === 'password') {
+        this.passwordType = '';
       } else {
-        this.passwordType = "password";
+        this.passwordType = 'password';
       }
       this.$nextTick(() => {
         (this.$refs as any).password.focus();
@@ -100,17 +131,17 @@ export default defineComponent({
       (this.$refs as any).loginForm.validate((valid: any) => {
         if (valid) {
           this.loading = true;
-          this["user/login"](this.loginForm)
+          this['user/login'](this.loginForm)
             .then(() => {
               // this.$store.dispatch('user/login', this.loginForm).then(() => {  //这种需要shims-vuex.d 我的运行不报错，应该是校验
-              this.$router.push({ path: this.redirect || "/" });
+              this.$router.push({ path: this.redirect || '/' });
               this.loading = false;
             })
             .catch(() => {
               this.loading = false;
             });
         } else {
-          console.log("error submit!!");
+          console.log('error submit!!');
           return false;
         }
       });

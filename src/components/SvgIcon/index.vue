@@ -11,12 +11,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
-import { isExternal } from "@/utils/validate";
+import { isExternal } from '@/utils/validate';
 
 export default defineComponent({
-  name: "SvgIcon",
+  name: 'SvgIcon',
   props: {
     iconClass: {
       type: String,
@@ -24,7 +24,7 @@ export default defineComponent({
     },
     className: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   computed: {
@@ -36,15 +36,15 @@ export default defineComponent({
     },
     svgClass() {
       if (this.className) {
-        return "svg-icon " + this.className;
+        return 'svg-icon ' + this.className;
       } else {
-        return "svg-icon";
+        return 'svg-icon';
       }
     },
     styleExternalIcon() {
       return {
         mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-        "-webkit-mask": `url(${this.iconClass}) no-repeat 50% 50%`,
+        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`,
       };
     },
   },
