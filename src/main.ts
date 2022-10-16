@@ -13,7 +13,7 @@ import { key, store } from "./stores/index.ts";
 import router from "./router/index.ts";
 
 import SvgIcon from "@/components/SvgIcon/index.vue"; // svg component
-
+import './permission' // permission control
 // import './assets/main.css'
 // pavue()
 const app = createApp(App);

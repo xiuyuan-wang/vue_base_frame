@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 /* Layout */
-// import Layout from '@/layout'
+import Layout from '@/layout/index.vue'
 
 export const constantRoutes = [
-  {
-    path: "/",
-    component: () => import("@/views/dashboard/index.vue"),
-    hidden: true,
-  },
+  // {
+  //   path: "/",
+  //   component: () => import("@/views/dashboard/index.vue"),
+  //   hidden: true,
+  // },
   {
     path: "/login",
     component: () => import("@/views/login/index.vue"),
@@ -19,19 +19,20 @@ export const constantRoutes = [
     component: () => import("@/views/error-page/404"),
     hidden: true,
   },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/dashboard',
-  //   children: [
-  //     {
-  //       path: 'dashboard',
-  //       component: () => import('@/views/dashboard/index'),
-  //       name: 'Dashboard',
-  //       meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-  //     }
-  //   ]
-  // }
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    hidden: false,
+    children: [
+      {
+        path: '/dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        name: 'Dashboard',
+        meta: { title: '首页', icon: 'el-icon-eleme', affix: true }
+      }
+    ]
+  }
 ];
 
 const router = createRouter({

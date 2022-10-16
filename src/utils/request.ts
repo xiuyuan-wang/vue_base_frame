@@ -3,7 +3,6 @@ import axios from "axios";
 import { store } from "@/stores/index.ts";
 import { getToken } from "@/utils/auth.ts";
 
-console.log(import.meta.env.VITE_BASE_API);
 // create an axios instance
 const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_API, // url = base url + request url

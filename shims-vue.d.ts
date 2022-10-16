@@ -9,3 +9,12 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+declare module 'path-browserify'
+// import VueRouter from 'vue-router';
+// import {Route} from 'vue-router';
+// declare module 'vue/types/vue'{
+//   interface Vue{
+//     $router:VueRouter,
+//     $router:Route
+//   }
+// }
