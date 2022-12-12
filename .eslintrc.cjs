@@ -1,16 +1,16 @@
 /* eslint-env node */
-require("@rushstack/eslint-patch/modern-module-resolution");
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
   extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
-    "@vue/eslint-config-typescript",
-    "@vue/eslint-config-prettier",
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier',
   ],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
   plugins: ['vue'],
   rules: {
@@ -60,5 +60,5 @@ module.exports = {
     'no-void': 2, // 禁用void操作符
     'no-unreachable': 2,
     'max-params': [0, 10],
-  }
+  },
 };

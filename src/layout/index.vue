@@ -9,13 +9,13 @@
     <div class="main-container">
       <el-container>
         <el-header>
-      <div :class="{ 'fixed-header': fixedHeader }">
-        <navbar />
-      </div>
-    </el-header>
-      <!-- <app-main /> -->
-      <el-main><app-main /></el-main>
-    </el-container>
+          <div :class="{ 'fixed-header': fixedHeader }">
+            <navbar />
+          </div>
+        </el-header>
+        <!-- <app-main /> -->
+        <el-main><app-main /></el-main>
+      </el-container>
     </div>
   </div>
 </template>
@@ -36,12 +36,12 @@ export default {
   setup() {
     const store = useStore();
     const sidebar: any = computed(() => {
-      console.log(store.state.app.sidebar)
-      return  store.state.app.sidebar
+      console.log(store.state.app.sidebar);
+      return store.state.app.sidebar;
     });
     const device: any = computed(() => store.state.app.device);
     const fixedHeader = computed(() => store.state.settings.fixedHeader);
-    
+
     const classObj = computed(() => {
       return {
         hideSidebar: !sidebar.value.opened,

@@ -1,6 +1,6 @@
 function randomString(length) {
-  const code = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-  let result = "";
+  const code = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  let result = '';
   for (let index = 0; index < length; index++) {
     result += code[Math.floor(Math.random() * code.length)];
   }
@@ -8,17 +8,17 @@ function randomString(length) {
 }
 function isString(text) {
   try {
-    return typeof eval(text) === "string";
+    return typeof eval(text) === 'string';
   } catch (err) {
     return false;
   }
 }
 const requireRegex = /_{0,2}require\s*\(\s*(["'].*["'])\s*\)/g;
-const IMPORT_STRING_PREFIX = "__require_for_vite";
+const IMPORT_STRING_PREFIX = '__require_for_vite';
 export function transformRequire(code, id) {
   const requireMatches = code.matchAll(requireRegex);
-  let importsString = "";
-  let packageName = "";
+  let importsString = '';
+  let packageName = '';
   let replaced = false;
   for (const item of requireMatches) {
     if (!isString(item[1])) {
@@ -33,6 +33,6 @@ export function transformRequire(code, id) {
   if (replaced) {
     code = importsString + code;
   }
-  code = code.replace("module.exports =", "export default");
+  code = code.replace('module.exports =', 'export default');
   return code;
 }

@@ -1,10 +1,4 @@
-import type SettingsStateTypes from "./types";
-
-const state = {
-  showSettings: true,
-  fixedHeader: true,
-  sidebarLogo: true,
-};
+import type SettingsStateTypes from './types';
 
 const mutations = {
   CHANGE_SETTING: (state, { key, value }) => {
@@ -17,9 +11,16 @@ const mutations = {
 
 const actions = {
   changeSetting({ commit }, data) {
-    commit("CHANGE_SETTING", data);
+    commit('CHANGE_SETTING', data);
   },
 };
+
+const state = {
+  showSettings: true,
+  fixedHeader: true,
+  sidebarLogo: true,
+};
+
 const settings: Module<SettingsStateTypes> = {
   namespaced: true,
   state,

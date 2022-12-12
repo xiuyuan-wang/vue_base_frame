@@ -17,10 +17,7 @@
             <template #title>{{ itemTwo.meta.title }}</template>
           </el-menu-item>
           <el-submenu v-else :index="itemTwo.path">
-            <template #title
-              ><i :class="itemTwo.meta.icon"></i
-              >{{ itemTwo.meta.title }}</template
-            >
+            <template #title><i :class="itemTwo.meta.icon"></i>{{ itemTwo.meta.title }}</template>
             <el-menu-item
               v-for="(itemThree, index) in itemTwo.children"
               :key="index"
@@ -45,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 export default defineComponent({
   setup() {
     const router = useRouter();

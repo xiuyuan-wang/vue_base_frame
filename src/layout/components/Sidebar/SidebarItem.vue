@@ -30,7 +30,7 @@
       </app-link>
     </template>
 
-    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    <!-- <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template v-slot:title>
         <div v-if="item.meta">
           <i
@@ -42,8 +42,8 @@
             ><span>{{ item.meta.title }}</span></template
           >
         </div>
-        <!-- <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" /> -->
-      </template>
+    <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
+    </template>
       <sidebar-item
         v-for="child in item.children"
         :key="child.path"
@@ -52,7 +52,7 @@
         :base-path="resolvePath(child.path)"
         class="nest-menu"
       />
-    </el-submenu>
+    </el-submenu> -->
   </div>
 </template>
 

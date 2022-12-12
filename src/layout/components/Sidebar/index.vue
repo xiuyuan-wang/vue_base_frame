@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { useStore } from '@/stores/index';
 import { useRoute, useRouter } from 'vue-router';
 import Logo from './Logo.vue';
@@ -37,7 +37,7 @@ export default defineComponent({
   components: { SidebarItem, Logo },
   setup() {
     const store = useStore();
-    const {getters} = useStore();
+    const { getters } = useStore();
     const route = useRoute();
     const router = useRouter();
     const isCollapse = computed(() => !getters['sidebar'].opened);

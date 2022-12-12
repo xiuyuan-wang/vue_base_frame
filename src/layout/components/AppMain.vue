@@ -1,15 +1,20 @@
 <template>
   <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
+    <router-view :key="key" v-slot="{ Component }">
+      <transition name="fade-transform" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <!-- <transition name="fade-transform" mode="out-in">
       <router-view :key="key" />
-    </transition>
+    </transition> -->
   </section>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 export default defineComponent({
-  name: "AppMain",
+  name: 'AppMain',
   computed: {
     key() {
       return this.$route.path;
@@ -21,7 +26,7 @@ export default defineComponent({
 <style scoped>
 .app-main {
   /*50 = navbar  */
-  min-height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   width: 100%;
   position: relative;
   overflow: hidden;

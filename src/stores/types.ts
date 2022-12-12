@@ -1,6 +1,6 @@
 // import NumFactoryStateTypes from '@/stores/modules/types.ts'
 // console.log(NumFactoryStateTypes)
-import type { AppStateTypes, SettingsStateTypes } from "./modules/types.ts";
+import type { AppStateTypes, SettingsStateTypes } from './modules/types.ts';
 
 export interface RootStateTypes {
   text: string;

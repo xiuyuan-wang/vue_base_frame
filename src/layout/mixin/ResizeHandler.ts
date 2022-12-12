@@ -6,22 +6,22 @@ const WIDTH = 992; // refer to Bootstrap's responsive design
 export default {
   watch: {
     $route(route) {
-      if (this.device === "mobile" && this.sidebar.opened) {
-        this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
+      if (this.device === 'mobile' && this.sidebar.opened) {
+        this.$store.dispatch('app/closeSideBar', { withoutAnimation: false });
       }
     },
   },
   beforeMount() {
-    window.addEventListener("resize", this.$_resizeHandler);
+    window.addEventListener('resize', this.$_resizeHandler);
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.$_resizeHandler);
+    window.removeEventListener('resize', this.$_resizeHandler);
   },
   mounted() {
     const isMobile = this.$_isMobile();
     if (isMobile) {
-        this.$store.dispatch("app/toggleDevice", "mobile");
-        this.$store.dispatch("app/closeSideBar", { withoutAnimation: true });
+      this.$store.dispatch('app/toggleDevice', 'mobile');
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: true });
     }
   },
   methods: {
@@ -34,10 +34,10 @@ export default {
     $_resizeHandler() {
       if (!document.hidden) {
         const isMobile = this.$_isMobile();
-        this.$store.dispatch("app/toggleDevice", isMobile ? "mobile" : "desktop");
+        this.$store.dispatch('app/toggleDevice', isMobile ? 'mobile' : 'desktop');
 
         if (isMobile) {
-            this.$store.dispatch("app/closeSideBar", { withoutAnimation: true });
+          this.$store.dispatch('app/closeSideBar', { withoutAnimation: true });
         }
       }
     },

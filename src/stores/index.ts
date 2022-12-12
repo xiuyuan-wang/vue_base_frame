@@ -1,14 +1,14 @@
-import type { InjectionKey } from "vue";
-import { createStore, Store, useStore as baseUseStore } from "vuex";
-import type { RootStateTypes, AllStateTypes } from "./types";
-import getters from "./getters";
-import app from "./modules/app";
-import settings from "./modules/settings";
-import user from "./modules/user";
+import type { InjectionKey } from 'vue';
+import { createStore, Store, useStore as baseUseStore } from 'vuex';
+import type { RootStateTypes, AllStateTypes } from './types';
+import getters from './getters';
+import app from './modules/app';
+import settings from './modules/settings';
+import user from './modules/user';
 
 export const store = createStore<RootStateTypes>({
   state: {
-    text: "",
+    text: '',
   },
   getters,
   mutations: {},
@@ -20,7 +20,7 @@ export const store = createStore<RootStateTypes>({
   },
 });
 
-export const key: InjectionKey<Store<RootStateTypes>> = Symbol("vue-store");
+export const key: InjectionKey<Store<RootStateTypes>> = Symbol('vue-store');
 
 export function useStore<T = AllStateTypes>() {
   return baseUseStore<T>(key);

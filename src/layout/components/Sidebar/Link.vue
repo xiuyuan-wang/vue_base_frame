@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed } from 'vue';
-import { isExternal } from "@/utils/validate";
+import { defineComponent } from 'vue';
+import { isExternal } from '@/utils/validate';
 
 export default defineComponent({
   props: {
@@ -21,9 +21,9 @@ export default defineComponent({
     },
     type() {
       if (this.isExternal) {
-        return "a";
+        return 'a';
       }
-      return "router-link";
+      return 'router-link';
     },
   },
   methods: {
@@ -31,8 +31,8 @@ export default defineComponent({
       if (this.isExternal) {
         return {
           href: to,
-          target: "_blank",
-          rel: "noopener",
+          target: '_blank',
+          rel: 'noopener',
         };
       }
       return {

@@ -1,7 +1,7 @@
 <template>
   <div id="customizePage">
     <div class="_fc-t-header">
-      <!-- <img class="_fc-t-logo" src="http://form-create.com/logo.png" /> -->
+      <img class="_fc-t-logo" src="http://form-create.com/logo.png" />
       <!-- <div class="_fc-t-name">form-create-designer</div> -->
       <div class="_fc-t-menu">
         <el-button size="small" @click="setJson"> 导入JSON</el-button>
@@ -11,7 +11,7 @@
         <el-button size="small" type="danger" @click="showTemplate">生成组件</el-button>
       </div>
     </div>
-    <fc-designer class="designer" ref="designer" />
+    <fc-designer ref="designer" />
 
     <el-dialog :title="title[type]" v-model="state" class="_fc-t-dialog">
       <div ref="editor" v-if="state"></div>
@@ -27,7 +27,6 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import jsonlint from 'jsonlint-mod';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/addon/lint/lint.css';
@@ -50,7 +49,7 @@ import formCreate from '@form-create/element-ui';
 
 const TITLE = ['生成规则', '表单规则', '生成组件', '设置生成规则', '设置表单规则'];
 
-export default defineComponent({
+export default {
   name: 'app',
   data() {
     return {
@@ -75,7 +74,6 @@ export default defineComponent({
   },
   methods: {
     load() {
-      console.log(222222222222);
       let val;
       if (this.type === 2) {
         val = this.value;
@@ -177,19 +175,12 @@ methods: {
     },
   },
   beforeCreate() {
-    // let aaa;
-    console.log(222222222222);
     window.jsonlint = jsonlint;
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>
-.designer {
-  ::v-deep ._fc-m-tools {
-    height: 40px !important;
-  }
-}
 ._fc-t-header {
   height: 60px;
   margin: 0 20px;
